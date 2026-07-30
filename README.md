@@ -101,6 +101,12 @@ https://github.com/BorjaAguilar/eventhub-backend
 
 ## Despliegue
 
+Aplicación publicada:
+
+```text
+https://eventhub-frontend-w7tj.onrender.com
+```
+
 Configuración prevista para un sitio estático en Render:
 
 | Campo | Valor |
