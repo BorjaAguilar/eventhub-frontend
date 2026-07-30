@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router'
+import useAuth from '../hooks/useAuth.js'
 import { login } from '../services/authService.js'
 
 function LoginPage() {
   const navigate = useNavigate()
+  const { saveSession } = useAuth()
   const [form, setForm] = useState({ email: '', password: '' })
   const [error, setError] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -19,8 +21,7 @@ function LoginPage() {
 
     try {
       const data = await login(form)
-      localStorage.setItem('eventhub_token', data.token)
-      localStorage.setItem('eventhub_user', JSON.stringify(data.user))
+      saveSession(data)
       navigate('/eventos')
     } catch (requestError) {
       setError(requestError.message)
@@ -80,4 +81,3 @@ function LoginPage() {
 }
 
 export default LoginPage
-

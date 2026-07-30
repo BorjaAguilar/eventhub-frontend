@@ -53,6 +53,35 @@
   color: #fff;
 }
 
+.user-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-nav__name {
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.logout-button {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  padding: 0.6rem 0.9rem;
+  background: transparent;
+  color: #d9d7e2;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  border-color: #b9a9ff;
+  color: #fff;
+}
+
 .page-content {
   flex: 1;
 }
@@ -257,6 +286,14 @@
 
   .main-nav .nav-cta {
     padding: 0.55rem 0.75rem;
+  }
+
+  .user-nav {
+    margin-left: auto;
+  }
+
+  .user-nav__name {
+    display: none;
   }
 }
 
