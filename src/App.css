@@ -1,0 +1,60 @@
+.welcome {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(124, 92, 255, 0.2), transparent 34%),
+    linear-gradient(135deg, #0c1020 0%, #17122b 100%);
+  color: #f7f7fb;
+}
+
+.welcome__content {
+  width: min(680px, 100%);
+  text-align: center;
+}
+
+.welcome__eyebrow {
+  color: #b9a9ff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.welcome h1 {
+  margin: 0.75rem 0;
+  font-size: clamp(3.5rem, 12vw, 7rem);
+  letter-spacing: -0.06em;
+}
+
+.welcome p {
+  margin: 0 auto 2rem;
+  max-width: 580px;
+  color: #c9c8d4;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  line-height: 1.7;
+}
+
+.welcome button {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.9rem 1.5rem;
+  background: #7c5cff;
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 160ms ease, background 160ms ease;
+}
+
+.welcome button:hover {
+  background: #9077ff;
+  transform: translateY(-2px);
+}
+
+.welcome button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 4px;
+}
+
