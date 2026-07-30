@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_URL || 'https://eventhub-backend-diw3.onrender.com/api'
+import { API_URL } from '../config/api.js'
 
 async function sendRequest(path, body) {
   let response
@@ -29,4 +29,3 @@ export function login(credentials) {
 export function register(userData) {
   return sendRequest('/auth/register', userData)
 }
-
