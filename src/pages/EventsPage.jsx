@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router'
 import { getEvents } from '../services/eventService.js'
 
 const categories = [
@@ -147,7 +148,9 @@ function EventsPage() {
                   <span className="event-card__category">
                     {categoryLabels[event.category] || 'Otros'}
                   </span>
-                  <h2>{event.title}</h2>
+                  <h2>
+                    <Link to={`/eventos/${event._id}`}>{event.title}</Link>
+                  </h2>
                   <p className="event-card__date">{formatDate(event.date)}</p>
                   <p className="event-card__location">{event.location}</p>
                   <div className="event-card__footer">
@@ -158,6 +161,9 @@ function EventsPage() {
                     </span>
                     <span>Por {event.creator?.name || 'EventHub'}</span>
                   </div>
+                  <Link className="event-card__link" to={`/eventos/${event._id}`}>
+                    Ver detalles
+                  </Link>
                 </div>
               </article>
             ))}
@@ -191,4 +197,3 @@ function EventsPage() {
 }
 
 export default EventsPage
-

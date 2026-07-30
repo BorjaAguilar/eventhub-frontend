@@ -304,6 +304,15 @@
   font-size: 1.3rem;
 }
 
+.event-card h2 a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.event-card h2 a:hover {
+  color: #b9a9ff;
+}
+
 .event-card__date,
 .event-card__location {
   margin: 0.35rem 0;
@@ -320,6 +329,109 @@
   border-top: 1px solid rgba(255, 255, 255, 0.09);
   color: #9795a5;
   font-size: 0.78rem;
+}
+
+.event-card__link,
+.back-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #b9a9ff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.event-card__link:hover,
+.back-link:hover {
+  color: #d2c8ff;
+}
+
+.event-detail {
+  width: min(1180px, calc(100% - 2rem));
+}
+
+.event-detail__hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(340px, 0.85fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  margin-top: 1.5rem;
+}
+
+.event-detail__image {
+  min-height: 480px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(185, 169, 255, 0.5), transparent 35%),
+    linear-gradient(135deg, #302557, #171b35);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.event-detail__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.event-detail__summary {
+  align-self: center;
+}
+
+.event-detail__summary h1 {
+  margin: 0.6rem 0 1.5rem;
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  line-height: 1.05;
+}
+
+.event-facts {
+  display: grid;
+  gap: 1rem;
+  margin: 0 0 1.5rem;
+}
+
+.event-facts div {
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.event-facts dt {
+  color: #8f8c9d;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.event-facts dd {
+  margin: 0.3rem 0 0;
+  color: #eeedf3;
+  line-height: 1.5;
+}
+
+.event-detail__summary .form-message {
+  margin-bottom: 1rem;
+}
+
+.event-description {
+  width: min(760px, 100%);
+  margin-top: 4rem;
+}
+
+.event-description h2 {
+  margin: 0.5rem 0 1rem;
+  font-size: 2rem;
+}
+
+.event-description p {
+  color: #c9c8d4;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  white-space: pre-line;
 }
 
 .pagination {
@@ -483,6 +595,14 @@
 
   .event-grid {
     grid-template-columns: 1fr;
+  }
+
+  .event-detail__hero {
+    grid-template-columns: 1fr;
+  }
+
+  .event-detail__image {
+    min-height: 280px;
   }
 }
 

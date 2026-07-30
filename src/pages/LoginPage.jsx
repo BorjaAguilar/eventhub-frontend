@@ -1,10 +1,11 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router'
+import { Link, useLocation, useNavigate } from 'react-router'
 import useAuth from '../hooks/useAuth.js'
 import { login } from '../services/authService.js'
 
 function LoginPage() {
   const navigate = useNavigate()
+  const location = useLocation()
   const { saveSession } = useAuth()
   const [form, setForm] = useState({ email: '', password: '' })
   const [error, setError] = useState('')
@@ -22,7 +23,7 @@ function LoginPage() {
     try {
       const data = await login(form)
       saveSession(data)
-      navigate('/eventos')
+      navigate(location.state?.from || '/eventos', { replace: true })
     } catch (requestError) {
       setError(requestError.message)
     } finally {

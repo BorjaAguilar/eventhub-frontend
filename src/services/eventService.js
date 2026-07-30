@@ -23,3 +23,41 @@ export async function getEvents({ category = '', page = 1, search = '' } = {}) {
   return result.data
 }
 
+async function parseResponse(response, fallbackMessage) {
+  const result = await response.json().catch(() => null)
+
+  if (!response.ok) {
+    throw new Error(result?.message || fallbackMessage)
+  }
+
+  return result
+}
+
+export async function getEventById(eventId) {
+  let response
+
+  try {
+    response = await fetch(`${API_URL}/events/${eventId}`)
+  } catch {
+    throw new Error('No se ha podido conectar con el servidor')
+  }
+
+  const result = await parseResponse(response, 'No se ha podido cargar el evento')
+  return result.data.event
+}
+
+export async function registerForEvent(eventId, token) {
+  let response
+
+  try {
+    response = await fetch(`${API_URL}/events/${eventId}/registrations`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}` },
+    })
+  } catch {
+    throw new Error('No se ha podido conectar con el servidor')
+  }
+
+  return parseResponse(response, 'No se ha podido completar la inscripción')
+}
+
