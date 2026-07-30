@@ -20,6 +20,7 @@ function Layout() {
           <NavLink to="/eventos">Eventos</NavLink>
           {user ? (
             <div className="user-nav">
+              <NavLink to="/mis-inscripciones">Mis inscripciones</NavLink>
               <span className="user-nav__name">Hola, {user.name}</span>
               <button className="logout-button" type="button" onClick={handleLogout}>
                 Cerrar sesión

@@ -61,3 +61,33 @@ export async function registerForEvent(eventId, token) {
   return parseResponse(response, 'No se ha podido completar la inscripción')
 }
 
+export async function getMyRegistrations(token) {
+  let response
+
+  try {
+    response = await fetch(`${API_URL}/events/me/registrations`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+  } catch {
+    throw new Error('No se ha podido conectar con el servidor')
+  }
+
+  const result = await parseResponse(response, 'No se han podido cargar tus inscripciones')
+  return result.data.events
+}
+
+export async function cancelEventRegistration(eventId, token) {
+  let response
+
+  try {
+    response = await fetch(`${API_URL}/events/${eventId}/registrations`, {
+      method: 'DELETE',
+      headers: { Authorization: `Bearer ${token}` },
+    })
+  } catch {
+    throw new Error('No se ha podido conectar con el servidor')
+  }
+
+  return parseResponse(response, 'No se ha podido cancelar la inscripción')
+}
+

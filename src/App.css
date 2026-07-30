@@ -177,6 +177,18 @@
   gap: 2rem;
 }
 
+.registrations-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.registrations-heading p {
+  margin: 0;
+  color: #aaa8b8;
+}
+
 .events-heading p {
   margin: 0;
   color: #aaa8b8;
@@ -417,6 +429,111 @@
   margin-bottom: 1rem;
 }
 
+.registrations-page > .form-message {
+  margin-bottom: 1.5rem;
+}
+
+.registration-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.registration-item {
+  display: grid;
+  grid-template-columns: 74px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.25rem;
+  background: #15192b;
+}
+
+.registration-item__date {
+  display: grid;
+  place-items: center;
+  min-height: 74px;
+  border-radius: 1rem;
+  background: rgba(124, 92, 255, 0.14);
+  color: #b9a9ff;
+  text-transform: uppercase;
+}
+
+.registration-item__date span {
+  align-self: end;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.registration-item__date strong {
+  align-self: start;
+  color: #fff;
+  font-size: 1.7rem;
+}
+
+.registration-item__content h2 {
+  margin: 0.35rem 0;
+  font-size: 1.25rem;
+}
+
+.registration-item__content h2 a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.registration-item__content h2 a:hover {
+  color: #b9a9ff;
+}
+
+.registration-item__content p {
+  margin: 0;
+  color: #aaa8b8;
+  font-size: 0.9rem;
+}
+
+.secondary-button,
+.danger-button,
+.text-button {
+  border-radius: 999px;
+  padding: 0.65rem 0.95rem;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.secondary-button {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: transparent;
+  color: #eeedf3;
+}
+
+.danger-button {
+  border: 1px solid rgba(255, 93, 112, 0.4);
+  background: rgba(255, 93, 112, 0.14);
+  color: #ffb5be;
+}
+
+.text-button {
+  border: 0;
+  background: transparent;
+  color: #aaa8b8;
+}
+
+.cancel-confirmation {
+  display: grid;
+  justify-items: end;
+  gap: 0.6rem;
+  color: #ffb5be;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.cancel-confirmation > div {
+  display: flex;
+  gap: 0.35rem;
+}
+
 .event-description {
   width: min(760px, 100%);
   margin-top: 4rem;
@@ -603,6 +720,27 @@
 
   .event-detail__image {
     min-height: 280px;
+  }
+
+  .registrations-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .registration-item {
+    grid-template-columns: 64px minmax(0, 1fr);
+  }
+
+  .registration-item__actions {
+    grid-column: 1 / -1;
+  }
+
+  .registration-item__actions > button {
+    width: 100%;
+  }
+
+  .cancel-confirmation {
+    justify-items: start;
   }
 }
 
