@@ -1,20 +1,24 @@
+import { Route, Routes } from 'react-router'
+import Layout from './components/Layout.jsx'
+import EventsPage from './pages/EventsPage.jsx'
+import HomePage from './pages/HomePage.jsx'
+import LoginPage from './pages/LoginPage.jsx'
+import NotFoundPage from './pages/NotFoundPage.jsx'
+import RegisterPage from './pages/RegisterPage.jsx'
 import './App.css'
 
 function App() {
   return (
-    <main className="welcome">
-      <section className="welcome__content">
-        <span className="welcome__eyebrow">Plataforma de gestión de eventos</span>
-        <h1>EventHub</h1>
-        <p>
-          Descubre nuevos planes, reserva tu plaza y gestiona todos tus eventos
-          desde un único lugar.
-        </p>
-        <button type="button">Explorar eventos</button>
-      </section>
-    </main>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="eventos" element={<EventsPage />} />
+        <Route path="login" element={<LoginPage />} />
+        <Route path="registro" element={<RegisterPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
   )
 }
 
 export default App
-
