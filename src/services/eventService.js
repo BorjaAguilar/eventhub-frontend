@@ -1,7 +1,7 @@
 import { API_URL } from '../config/api.js'
 
-export async function getEvents({ category = '', page = 1, search = '' } = {}) {
-  const query = new URLSearchParams({ page: String(page), limit: '9' })
+export async function getEvents({ category = '', limit = 9, page = 1, search = '' } = {}) {
+  const query = new URLSearchParams({ page: String(page), limit: String(limit) })
 
   if (category) query.set('category', category)
   if (search.trim()) query.set('search', search.trim())
@@ -91,3 +91,33 @@ export async function cancelEventRegistration(eventId, token) {
   return parseResponse(response, 'No se ha podido cancelar la inscripción')
 }
 
+async function sendAdminRequest(path, { body, method }, token) {
+  let response
+
+  try {
+    response = await fetch(`${API_URL}${path}`, {
+      method,
+      headers: {
+        Authorization: `Bearer ${token}`,
+        ...(body ? { 'Content-Type': 'application/json' } : {}),
+      },
+      ...(body ? { body: JSON.stringify(body) } : {}),
+    })
+  } catch {
+    throw new Error('No se ha podido conectar con el servidor')
+  }
+
+  return parseResponse(response, 'No se ha podido completar la operación')
+}
+
+export function createEvent(eventData, token) {
+  return sendAdminRequest('/events', { method: 'POST', body: eventData }, token)
+}
+
+export function updateEvent(eventId, eventData, token) {
+  return sendAdminRequest(`/events/${eventId}`, { method: 'PUT', body: eventData }, token)
+}
+
+export function deleteEvent(eventId, token) {
+  return sendAdminRequest(`/events/${eventId}`, { method: 'DELETE' }, token)
+}
